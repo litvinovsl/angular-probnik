@@ -1,10 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IProduct } from './models/product';
+// import { products as data} from './data/products'
+import { ProductService } from './services/products.service';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'my-test-angular-app';
+export class AppComponent implements OnInit {
+  title = 'my test angular app';
+  // products: IProduct[] = []
+  loading = false
+  products$: Observable<IProduct[]>
+
+  constructor(private productsService: ProductService) { }
+  ngOnInit(): void {
+    this.loading = true
+    this.products$ = this.productsService.getAll().pipe(
+      tap(() => this.loading = false)
+    )
+    // this.productsService.getAll().subscribe(data => {
+    //   console.log(data)
+    //   this.products = data
+    //   this.loading = false
+
+    // })
+  }
 }

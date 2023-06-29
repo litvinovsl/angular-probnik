@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="form">
+    <h2>{{title}}</h2>
+    <!-- <label for="name"><span class="error">*</span>Name:</label>
+    <input id="name" formControlName="name" type="text">
+    <label for="last"><span class="error">*</span>Last Name:</label>
+    <input id="last" formControlName="lastName" type="text">
+    <label for="otche"><span class="error">*</span>Otchestvo:</label>
+    <input id="otche" formControlName="otche" type="text"> -->
+    <!-- <div>
+        <label for="check"><span class="error">*</span>Cовершенолетний </label>
+        <input id="check" formControlName="oldest" type="checkbox">
+    </div> -->
+    <form-text formControlName="name" name="Name:" ></form-text>
+    <label>
+        Rate: 
+        <form-star formControlName="stars"></form-star>
+    </label>
+    <!-- <div>
+        <label for="check">в браке </label>
+        <input id="check" formControlName="married" type="checkbox">
+    </div> -->
+
+    <p class="error" *ngIf='!isValid()'>Заполните поля</p>
+    <button type="submit">Check</button>
+</form>

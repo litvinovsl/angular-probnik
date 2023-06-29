@@ -1,0 +1,66 @@
+<style>
+    .product {
+        text-align: center;
+        margin: 0;
+
+    }
+
+    .product__descriptions {
+        text-align: center;
+        margin: 0;
+        margin-top: 15px;
+    }
+
+    .product__conteiner {
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        margin-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    .product__image {
+        width: 300px;
+        height: auto;
+        align-self: center;
+        justify-self: center;
+        margin-bottom: 10px;
+    }
+
+    .product__price_bold {
+        font-weight: bold;
+    }
+
+    .product__showbtn {
+        width: 200px;
+        height: 50px;
+        font-size: 15px;
+        font-weight: 600;
+        border: none;
+    }
+
+    .product__showbtn_yoelow {
+        background-color: #dff7a1;
+    }
+    .product__showbtn_blue{
+        background-color: #7e97f8;
+    }
+</style>
+<div class="product__conteiner">
+    <h2 class="product">{{product.title}}</h2>
+    <img class="product__image" src={{product.image}} alt={{product.category}}>
+    <p class="product__price">Price: <span class="product__price_bold">{{product.price | currency:'€'}}</span></p>
+    <button class="product__showbtn"
+        [ngClass]="{
+            'product__showbtn_yoelow': !details,
+            'product__showbtn_blue': details
+        }"
+        (click)="details = !details">
+        {{details ? 'Hide' : 'Show'}} Details
+    </button>
+    <p *ngIf="details" class="product__descriptions">{{product.description}}</p>
+
+</div>

@@ -6,6 +6,7 @@ import { ControlValueAccessor, NgControl } from "@angular/forms";
 @Component({
     selector: 'form-text',
     templateUrl: './form-text.component.html',
+    styleUrls: ['./form-text.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -23,7 +24,7 @@ export class FormTextComponent implements ControlValueAccessor {
         this.ngControl.valueAccessor = this
     }
 
-    public onEducationValueChange(event: Event): void{
+    public onEditorValueChange(event: Event): void{
         const targetDivElement = event.target as HTMLDivElement
         const content = targetDivElement.innerText
         this.onChange(content)

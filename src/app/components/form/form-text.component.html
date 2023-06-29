@@ -1,2 +1,7 @@
-<p class="">{{name}}</p>
-<input formControlName="formControlName">
+<p class="p-text">{{name}}</p>
+<div class="text-area"
+    contenteditable
+    [innerText]="value"
+    (keyup)="onEditorValueChange($event)">
+</div>
+<!-- <input> -->

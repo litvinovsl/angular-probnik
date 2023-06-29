@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 })
 
 export class FormComponent implements OnInit{
+    @Input() data: object
     ngOnInit(): void {
     }
     form = new FormGroup({
@@ -21,8 +22,14 @@ export class FormComponent implements OnInit{
         stars: new FormControl (1)
     })
     submit(){
-        console.log(this.form.value)
-        console.log(this.form.status)
+        // console.log(this.form.value)
+        // console.log(this.form.status)
+        // this.data = this.form.value
+        console.log(this.data)
+        if (this.isValid()){
+            this.data = this.form.value
+        }
+
     }
     isValid(){
         return this.form.status === 'VALID'

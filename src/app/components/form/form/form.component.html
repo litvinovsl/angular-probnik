@@ -9,7 +9,7 @@
     <form-text formControlName="otche" name="Otchestvo:" ></form-text>
 
     <label>
-        Rate: 
+        Сложность рабочего процесса: 
         <form-star formControlName="stars"></form-star>
     </label>
     <div>
@@ -20,7 +20,7 @@
     <p class="error" *ngIf='!isValid()'>Заполните поля</p>
     <button type="submit">Check</button>
     <div class="json-data">
-        {{form.value | json}}
+        <!-- {{form.value | json}} -->
     </div>
 
 </form>
@@ -30,6 +30,8 @@
     <p class="">Имя: {{data.name}}</p>
     <p class="">Фамилия: {{data.lastName}}</p>
     <p class="">Отчество: {{data.otche}}</p>
-    <p class="">{{data.married ? 'Состоит в браке' : 'Отсутствует брак'}}</p>
+    <p class="">{{data.married ? 'Состоит в браке' : 'Не в браке'}}</p>
     <p class="">Возраст совершеннолетия {{data.oldest ? 'достигнут' : 'НЕ достигнут'}}</p>
+    <p class="">Сложность рабочего процесса: {{data.stars.text}}</p>
+
 </div>

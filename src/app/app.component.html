@@ -11,13 +11,10 @@
 </style>
 <div class="main">
   <h1 class="title">{{ title | titlecase}}</h1>
-  <!-- <form-text name="Имя"></form-text>
-  <form-text name="Фамилия"></form-text>
-  <form-text name="Отчество"></form-text> -->
   <form-component title="Form test">
   </form-component>
   <p *ngIf="loading" class="loading">Loading...</p>
-  <!-- <app-product *ngFor="let product of products$ | async" [product]="product"></app-product> -->
+  <app-product *ngFor="let product of products$ | async" [product]="product"></app-product>
 </div>
 
 

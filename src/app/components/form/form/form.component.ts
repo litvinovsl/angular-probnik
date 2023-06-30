@@ -28,7 +28,7 @@ export class FormComponent implements OnInit {
         otche: new FormControl('', Validators.required),
         married: new FormControl(false),
         oldest: new FormControl(false),
-        stars: new FormControl({value: null, disabled: false})
+        stars: new FormControl({value: null, disabled: false}, Validators.required)
     })
 
     submit() {

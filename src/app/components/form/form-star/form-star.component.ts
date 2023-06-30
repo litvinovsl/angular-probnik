@@ -18,51 +18,61 @@ export class FormStarComponent implements ControlValueAccessor {
   public ratings = [
     {
       stars: 1,
-      text: 'must GTFO ASAP'
+      text: 'Отдыхаю'
     },
     {
       stars: 2,
-      text: 'meh'
+      text: 'Легко'
     },
     {
       stars: 3,
-      text: 'it\'s ok'
+      text: 'Нормально'
     },
     {
       stars: 4,
-      text: 'I\'d be sad if a black hole ate it'
+      text: 'Сложно'
     },
     {
       stars: 5,
-      text: '10/10 would write review on Amazon'
+      text: 'Очень сложно'
     }
   ]
   public disabled: boolean;
   public _value: number;
 
-  onChanged: any = () => {}
+  onChanged: any = () => {
+    console.log('onChange')
+    
+  }
   onTouched: any = () => {}
 
   writeValue(val: any) {
     this._value = val;
+    console.log(val, 'writeValue')
   }
 
   registerOnChange(fn: any){
     this.onChanged = fn
+    // console.log(fn, 'onChange')
   }
   registerOnTouched(fn: any){
     this.onTouched = fn
+    console.log(fn, 'onTouched')
+
   }
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+    console.log(isDisabled, 'isDisabled')
+
   }
 
   setRating(star: any) {
     if(!this.disabled) {
       this._value = star.stars;
       this.ratingText = star.text
-      this.onChanged(star.stars);
+      this.onChanged(star);
+      // this.onChanged(star.text);
       this.onTouched();
     }
   }

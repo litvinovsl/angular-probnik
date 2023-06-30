@@ -20,12 +20,16 @@
     <p class="error" *ngIf='!isValid()'>Заполните поля</p>
     <button type="submit">Check</button>
     <div class="json-data">
-        {{form.value | json}}
+        <!-- {{form.value | json}} -->
     </div>
 
 </form>
 
 
-<div class="data-cont">
-    <!-- <p class="">Имя: {{data.name}}</p> -->
+<div *ngIf="isShow" class="data-cont">
+    <p class="">Имя: {{data.name}}</p>
+    <p class="">Фамилия: {{data.lastName}}</p>
+    <p class="">Отчество: {{data.otche}}</p>
+    <p class="">{{data.married ? 'Состоит в браке' : 'Отсутствует брак'}}</p>
+    <p class="">Возраст совершеннолетия {{data.oldest ? 'достигнут' : 'НЕ достигнут'}}</p>
 </div>

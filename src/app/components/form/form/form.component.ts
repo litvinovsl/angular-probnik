@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-
-import { IUser } from "src/app/models/user";
+import {JobPlaceService} from '../../../services/job-place.service'
 
 
 @Component({
@@ -10,35 +9,38 @@ import { IUser } from "src/app/models/user";
     styleUrls: ['./form.component.scss']
 })
 
-export class FormComponent implements OnInit{
-    @Input() data: any
+export class FormComponent implements OnInit {
+    @Input() data: any 
+    jobs:object = [];
     title: string
     isShow: boolean = false
+
+    constructor(private jobPlaceService: JobPlaceService){}
     ngOnInit(): void {
         this.data = this.form.value
+        this.jobPlaceService.getJobPlace().subscribe((res) => {
+            this.jobs = res;
+          })
     }
     form = new FormGroup({
-        name: new FormControl('d', Validators.required),
-        lastName: new FormControl('d', Validators.required),
-        otche: new FormControl('d', Validators.required),
+        name: new FormControl('', Validators.required),
+        lastName: new FormControl('', Validators.required),
+        otche: new FormControl('', Validators.required),
         married: new FormControl(false),
         oldest: new FormControl(false),
-        stars: new FormControl (1)
+        stars: new FormControl({value: null, disabled: false})
     })
-    
-    submit(){
-        // console.log(this.form.value)
-        // console.log(this.form.status)
-        // this.data = this.form.value
-        if (this.isValid()){
+
+    submit() {
+        if (this.isValid()) {
             this.data = this.form.value
             this.isShow = true
-        console.log(this.data)
+            console.log(this.data)
 
         }
 
     }
-    isValid(){
+    isValid() {
         return this.form.status === 'VALID'
     }
 
